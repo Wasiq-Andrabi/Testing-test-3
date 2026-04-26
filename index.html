@@ -1,626 +1,595 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Integrated Concept Test - Marks Saathi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrated Concept Test | Marks Saathi</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            /* Modern, professional educational palette */
+            --primary: #4f46e5;      /* Indigo */
+            --primary-hover: #4338ca;
+            --secondary: #0ea5e9;    /* Ocean Blue */
+            --dark: #0f172a;         /* Slate 900 */
+            --text-main: #334155;    /* Slate 700 */
+            --text-light: #64748b;   /* Slate 500 */
+            --bg-body: #f8fafc;      /* Slate 50 */
+            --bg-surface: #ffffff;
+            --success: #10b981;      /* Emerald */
+            --warning: #f59e0b;      /* Amber */
+            --border: #e2e8f0;       /* Slate 200 */
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+        }
 
-<style>
-:root{
---primary:#2563eb;
---secondary:#4f46e5;
---success:#16a34a;
---danger:#dc2626;
---dark:#0f172a;
---light:#475569;
---white:#ffffff;
---shadow:0 15px 35px rgba(0,0,0,.15);
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit',sans-serif;}
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
 
-body{
-background:linear-gradient(-45deg,#FFDEE9,#B5FFFC,#E0C3FC,#8EC5FC);
-background-size:400% 400%;
-animation:bg 10s ease infinite;
-color:var(--dark);
-}
+        /* --- NAVIGATION BAR --- */
+        .top-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
 
-@keyframes bg{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
-}
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
 
-/* HEADER */
-header{text-align:center;padding:4rem 1rem 2rem;}
+        .logo-img-small {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid var(--border);
+        }
 
-/* UPDATED LOGO STYLING */
-.logo-img{
-width: 180px;
-height: 180px;
-background: #fff;
-border-radius: 40px; /* Modern iOS-style rounded square */
-box-shadow: var(--shadow);
-object-fit: cover; /* Ensures image fills the square perfectly without squishing */
-border: 4px solid #fff; /* Clean white frame */
-margin-bottom: 0.5rem;
-}
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
 
-.brand-name{
-font-size:3rem;
-font-weight:900;
-color:var(--secondary);
-margin-top:1rem;
-line-height: 1;
-}
-.school-name {
-font-size: 1.1rem;
-font-weight: 800;
-color: var(--dark);
-letter-spacing: 2px;
-margin-top: 10px;
-text-transform: uppercase;
-}
-.presents-text{
-letter-spacing:4px;
-font-weight:700;
-color: var(--light);
-margin-top: 1rem;
-text-transform: uppercase;
-}
+        .brand-name-small {
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+        }
 
-/* HERO */
-.hero{
-max-width:1200px;
-margin:auto;
-padding:2rem 1rem;
-text-align:center;
-}
-.main-title{
-font-size:2.8rem;
-font-weight:900;
-margin-bottom:1.5rem;
-color: var(--dark);
-letter-spacing: 1px;
-}
+        .school-name-small {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
 
-/* INFO ROW */
-.info-row{
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:1.2rem;
-margin-top:1rem;
-}
+        .nav-cta {
+            display: none;
+        }
 
-.info-box{
-background:#fff;
-padding:18px 34px;
-border-radius:20px;
-box-shadow:var(--shadow);
-text-align:center;
-min-width:260px;
-}
+        @media (min-width: 768px) {
+            .nav-cta {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                background: var(--primary);
+                color: white;
+                padding: 0.6rem 1.2rem;
+                border-radius: 50px;
+                font-weight: 700;
+                font-size: 0.9rem;
+                text-decoration: none;
+                transition: background 0.3s;
+            }
+            .nav-cta:hover { background: var(--primary-hover); }
+        }
 
-.price-crossed{color:#ef4444;text-decoration:line-through}
-.price-free{color:var(--success);font-size:1.8rem;font-weight:900}
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(135deg, #e0e7ff 0%, #ffffff 100%);
+            padding: 4rem 1.5rem 3rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
 
-.date-box{
-border:3px solid var(--primary);
-min-width:300px;
-}
-.date-text{
-font-size:1.25rem;
-font-weight:900;
-color:var(--primary);
-}
-.time-text{color:var(--light);margin-top:4px;font-weight:600}
+        .hero-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-.timer-box{
-min-width:340px;
-padding:22px 40px;
-}
-.timer-label{
-font-size:.85rem;
-font-weight:900;
-letter-spacing:2px;
-margin-bottom:10px;
-}
-.timer-row{
-display:flex;
-gap:18px;
-justify-content:center;
-}
-.time-val{
-font-size:2rem;
-font-weight:900;
-color:var(--secondary);
-}
-.time-lbl{
-font-size:.75rem;
-color:var(--light);
-}
+        .presents-text {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: #e0e7ff;
+            padding: 6px 16px;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+        }
 
-@media (min-width: 992px){
-.info-row{
-flex-direction:row;
-justify-content:center;
-align-items:stretch;
-}
-}
+        .main-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            color: var(--dark);
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+        }
 
-/* CLASS CARDS */
-.cards-container{
-max-width:1200px;
-margin:auto;
-padding:3rem 1.5rem;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:2rem;
-}
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.25rem);
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-.exam-card{
-background:#fff;
-border-radius:22px;
-box-shadow:var(--shadow);
-overflow:hidden;
-transition:.3s;
-}
-.exam-card:hover{transform:translateY(-6px)}
+        /* --- HERO INFO & TIMER --- */
+        .info-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
 
-.card-header{
-background:#f8fafc;
-padding:1.2rem;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
+        .info-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 250px;
+            flex: 1;
+            max-width: 320px;
+        }
 
-.class-badge{
-background:var(--dark);
-color:#fff;
-padding:8px 18px;
-border-radius:8px;
-font-weight:800;
-}
+        .price-tag {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 10px;
+        }
+        .price-crossed { color: var(--text-light); text-decoration: line-through; font-weight: 600; font-size: 1.2rem;}
+        .price-free { color: var(--success); font-size: 2.5rem; font-weight: 900; line-height: 1; }
 
-.card-body{padding:1.4rem;}
+        .date-text { font-size: 1.4rem; font-weight: 800; color: var(--dark); }
+        .time-text { color: var(--primary); font-weight: 700; margin-top: 4px; font-size: 1.1rem; }
 
-/* SYLLABUS STYLING */
-.subject-title {
-font-size: 1.15rem;
-font-weight: 800;
-margin-bottom: 8px;
-margin-top: 18px;
-display: flex;
-align-items: center;
-gap: 8px;
-}
-.subject-title:first-child { margin-top: 0; }
+        .timer-card {
+            border: 2px solid var(--primary);
+            background: #f5f3ff;
+            max-width: 400px;
+        }
+        
+        .timer-label {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
 
-.subject-math { color: #db2777; } /* Pink/Rose */
-.subject-science { color: #059669; } /* Emerald Green */
-.subject-english { color: #2563eb; } /* Royal Blue */
+        .timer-row {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
 
-.chapter-list {
-list-style: none;
-padding-left: 0;
-margin-bottom: 10px;
-}
-.chapter-list li {
-position: relative;
-padding-left: 20px;
-font-size: 0.95rem;
-font-weight: 600;
-color: var(--light);
-margin-bottom: 6px;
-line-height: 1.4;
-}
-.chapter-list li::before {
-content: '\f101'; /* FontAwesome angle-double-right */
-font-family: 'Font Awesome 6 Free';
-font-weight: 900;
-color: #cbd5e1;
-position: absolute;
-left: 0;
-font-size: 0.8rem;
-top: 2px;
-}
+        .time-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            min-width: 60px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
 
-.marking-grid{
-margin-top:1.8rem;
-background:#f8fafc;
-border-radius:14px;
-padding:14px;
-}
+        .time-val { font-size: 1.8rem; font-weight: 900; color: var(--dark); line-height: 1; }
+        .time-lbl { font-size: 0.7rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; margin-top: 4px; }
 
-.mark-row{
-display:grid;
-grid-template-columns:1fr 1fr;
-text-align:center;
-border-bottom:1px solid #e5e7eb;
-padding-bottom:8px;
-margin-bottom:8px;
-}
+        /* --- SYLLABUS SECTION --- */
+        .syllabus-section {
+            padding: 5rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-.mark-val{
-font-size:1.2rem;
-font-weight:900;
-color:var(--secondary);
-}
-.mark-lbl{
-font-size:.75rem;
-color:var(--light);
-font-weight:600;
-}
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
 
-.scheme{
-display:flex;
-align-items:center;
-gap:8px;
-margin-top:6px;
-font-weight:600;
-}
-.scheme.plus{color:var(--success);}
-.scheme.zero{color:var(--danger);}
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--dark);
+        }
 
-/* HOW TO PARTICIPATE */
-.participate-section{
-max-width:1100px;
-margin:3rem auto;
-padding:0 1.5rem;
-text-align:center;
-}
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
 
-.participate-title{
-font-size:2.2rem;
-font-weight:900;
-margin-bottom:2rem;
-}
+        .exam-card {
+            background: var(--bg-surface);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-.steps{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:2rem;
-}
+        .exam-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.15);
+        }
 
-.step{
-background:#fff;
-padding:2rem 1.5rem;
-border-radius:20px;
-box-shadow:var(--shadow);
-}
+        .card-header {
+            background: var(--dark);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.step-num{
-width:55px;
-height:55px;
-border-radius:50%;
-background:var(--secondary);
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:1.8rem;
-font-weight:900;
-margin:0 auto 1rem;
-}
+        .class-badge {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
 
-.step-title{
-font-size:1.4rem;
-font-weight:900;
-margin-bottom:.6rem;
-}
+        .card-header i { font-size: 1.5rem; color: var(--secondary); }
 
-/* DOWNLOAD */
-.download-app-container{
-text-align:center;
-margin:4rem auto;
-}
+        .card-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
 
-.download-btn{
-display:inline-flex;
-align-items:center;
-gap:14px;
-padding:1.3rem 3.2rem;
-font-size:1.25rem;
-font-weight:900;
-color:#fff;
-border-radius:50px;
-text-decoration:none;
-background:linear-gradient(45deg,#ff512f,#dd2476,#ff512f);
-background-size:200% auto;
-box-shadow:0 20px 40px rgba(221,36,118,.45);
-animation:move 3s infinite;
-}
+        .subject-block { margin-bottom: 1.5rem; }
 
-@keyframes move{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
-}
+        .subject-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--bg-body);
+        }
 
-/* REPORTS */
-.reports-section{
-background:linear-gradient(135deg,#667eea,#764ba2);
-padding:4rem 1.5rem;
-text-align:center;
-color:#fff;
-}
+        .subject-math { color: #db2777; }
+        .subject-science { color: #059669; }
+        .subject-english { color: #2563eb; }
 
-.reports-box{
-max-width:900px;
-margin:auto;
-background:rgba(255,255,255,.15);
-padding:2.4rem;
-border-radius:22px;
-}
+        .chapter-list {
+            list-style: none;
+            padding-left: 0;
+        }
 
-.reports-title{
-font-size:2.2rem;
-font-weight:900;
-margin-bottom:1.2rem;
-}
+        .chapter-list li {
+            position: relative;
+            padding-left: 24px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
 
-.reports-desc{
-font-size:1.25rem;
-line-height:1.6;
-}
+        .chapter-list li::before {
+            content: '\f0da'; /* Solid right arrow */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--text-light);
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 0.9rem;
+        }
 
-/* SHARE */
-.share-container{
-text-align:center;
-margin:3rem 0;
-}
-.share-btn{
-padding:.9rem 2.4rem;
-border-radius:30px;
-border:none;
-font-weight:800;
-background:#fff;
-color:var(--primary);
-box-shadow:var(--shadow);
-cursor:pointer;
-}
+        /* Card Footer - Marks */
+        .card-footer {
+            margin-top: auto;
+            background: var(--bg-body);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            border: 1px solid var(--border);
+        }
 
-/* FOOTER */
-footer{
-background:#0f172a;
-color:#cbd5e1;
-text-align:center;
-padding:2.5rem 1rem;
-}
-</style>
+        .mark-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+        }
+
+        .stat-val { font-size: 1.5rem; font-weight: 900; color: var(--dark); line-height: 1; }
+        .stat-lbl { font-size: 0.75rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; margin-top: 4px; }
+
+        .scheme-row {
+            display: flex;
+            align-items: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+        .scheme-row.positive { color: var(--success); }
+        .scheme-row.neutral { color: var(--text-light); }
+        .scheme-row i { width: 20px; text-align: center; margin-right: 6px; }
+
+        /* --- HOW TO PARTICIPATE --- */
+        .participate-section {
+            background: var(--bg-surface);
+            padding: 5rem 1.5rem;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .steps-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .step-card {
+            padding: 2rem;
+        }
+
+        .step-icon {
+            width: 70px;
+            height: 70px;
+            background: #e0e7ff;
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 0 0 10px rgba(79, 70, 229, 0.1);
+        }
+
+        .step-title { font-size: 1.3rem; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+        .step-desc { color: var(--text-light); font-weight: 500; }
+
+        /* --- CTA SECTION --- */
+        .cta-section {
+            background: var(--dark);
+            color: white;
+            padding: 5rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Abstract shapes in background of CTA */
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -10%;
+            width: 50%; height: 200%;
+            background: radial-gradient(circle, rgba(79,70,229,0.3) 0%, rgba(0,0,0,0) 70%);
+            z-index: 1;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 1.5rem; line-height: 1.2; }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            color: var(--dark);
+            padding: 1.2rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 10px 25px rgba(255,255,255,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .download-btn i { font-size: 1.4rem; color: var(--primary); }
+        .download-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255,255,255,0.2); }
+
+        .share-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: border-color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .share-btn:hover { border-color: white; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #020617; /* Slate 950 */
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-tagline {
+            color: white;
+            font-weight: 700;
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 640px) {
+            .nav-brand { gap: 10px; }
+            .logo-img-small { width: 40px; height: 40px; border-radius: 10px; }
+            .brand-name-small { font-size: 1.1rem; }
+            .school-name-small { font-size: 0.55rem; }
+            
+            .info-grid { flex-direction: column; align-items: stretch; }
+            .info-card { max-width: 100%; }
+        }
+
+    </style>
 </head>
-
 <body>
 
-<header>
-<img src="https://i.postimg.cc/HWSDVGyx/IMG-20260427-000339.jpg" class="logo-img" alt="Marks Saathi Logo">
-<div class="brand-name">MARKS SAATHI</div>
-<div class="school-name">BY HABRAS INTERNATIONAL SCHOOL</div>
-<div class="presents-text">PRESENTS</div>
-</header>
+    <nav class="top-nav">
+        <a href="#" class="nav-brand">
+            <img src="https://i.postimg.cc/HWSDVGyx/IMG-20260427-000339.jpg" class="logo-img-small" alt="Marks Saathi Logo">
+            <div class="brand-text">
+                <div class="brand-name-small">MARKS SAATHI</div>
+                <div class="school-name-small">By Habras International School</div>
+            </div>
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=co.ted.ykvjf" class="nav-cta" target="_blank">
+            Get App <i class="fab fa-google-play"></i>
+        </a>
+    </nav>
 
-<section class="hero">
-<h2 class="main-title">INTEGRATED CONCEPT TEST</h2>
+    <header class="hero">
+        <div class="hero-container">
+            <div class="presents-text">Presents</div>
+            <h1 class="main-title">INTEGRATED CONCEPT TEST</h1>
+            <p class="hero-subtitle">Evaluate your knowledge, get detailed performance reports, and prepare to score better—all completely free on the Marks Saathi app.</p>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="price-tag">
+                        <span class="price-crossed">₹999</span>
+                        <span class="price-free">FREE</span>
+                    </div>
+                </div>
 
-<div class="info-row">
-<div class="info-box">
-<div class="price-crossed">Worth ₹999</div>
-<div class="price-free">FREE</div>
-</div>
+                <div class="info-card">
+                    <div class="date-text">Sun, 3 May 2026</div>
+                    <div class="time-text">07:45 PM – 08:45 PM</div>
+                </div>
 
-<div class="info-box date-box">
-<div class="date-text">Sunday, 3 May 2026</div>
-<div class="time-text">07:45 PM – 08:45 PM</div>
-</div>
+                <div class="info-card timer-card">
+                    <div class="timer-label" id="timer-heading"><i class="fas fa-hourglass-half"></i> Test Starts In</div>
+                    <div class="timer-row" id="timer-display">
+                        <div class="time-unit"><div class="time-val" id="d">00</div><div class="time-lbl">Days</div></div>
+                        <div class="time-unit"><div class="time-val" id="h">00</div><div class="time-lbl">Hrs</div></div>
+                        <div class="time-unit"><div class="time-val" id="m">00</div><div class="time-lbl">Min</div></div>
+                        <div class="time-unit"><div class="time-val" id="s">00</div><div class="time-lbl">Sec</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-<div class="info-box timer-box">
-<div class="timer-label" id="timer-heading">TEST STARTS IN</div>
-<div class="timer-row" id="timer-display">
-<div><div class="time-val" id="d">00</div><div class="time-lbl">Days</div></div>
-<div><div class="time-val" id="h">00</div><div class="time-lbl">Hrs</div></div>
-<div><div class="time-val" id="m">00</div><div class="time-lbl">Min</div></div>
-<div><div class="time-val" id="s">00</div><div class="time-lbl">Sec</div></div>
-</div>
-</div>
-</div>
-</section>
-
-<section class="cards-container">
-
-<div class="exam-card">
-<div class="card-header">
-<div class="class-badge">Class 8</div><i class="fas fa-graduation-cap"></i>
-</div>
-<div class="card-body">
-    
-    <div class="subject-title subject-math"><i class="fas fa-calculator"></i> Mathematics</div>
-    <ul class="chapter-list">
-        <li>Rational Numbers</li>
-        <li>Linear Equations in One Variable</li>
-        <li>Understanding Quadrilaterals</li>
-    </ul>
-
-    <div class="subject-title subject-science"><i class="fas fa-flask"></i> Science</div>
-    <ul class="chapter-list">
-        <li>Coal and Petroleum</li>
-        <li>Combustion and Flame</li>
-        <li>Conservation of Plants and Animals</li>
-    </ul>
-
-    <div class="subject-title subject-english"><i class="fas fa-book-open"></i> English</div>
-    <ul class="chapter-list">
-        <li>How Teachers Learn</li>
-        <li>Life</li>
-        <li>Global Warming</li>
-        <li>Grammar (Tenses, Modals, Articles, Prepositions, Error Detection)</li>
-    </ul>
-
-<div class="marking-grid">
-<div class="mark-row">
-<div><div class="mark-val">60</div><div class="mark-lbl">Questions</div></div>
-<div><div class="mark-val">60</div><div class="mark-lbl">Max Marks</div></div>
-</div>
-<div class="scheme plus"><i class="fas fa-plus-circle"></i> +1 Mark for Correct Answer</div>
-<div class="scheme zero"><i class="fas fa-times-circle"></i> 0 Mark for Incorrect Answer</div>
-</div>
-</div>
-</div>
-
-<div class="exam-card">
-<div class="card-header">
-<div class="class-badge">Class 9</div><i class="fas fa-graduation-cap"></i>
-</div>
-<div class="card-body">
-
-    <div class="subject-title subject-math"><i class="fas fa-calculator"></i> Mathematics</div>
-    <ul class="chapter-list">
-        <li>Number System</li>
-        <li>Polynomials</li>
-        <li>Linear Equations in Two Variables</li>
-    </ul>
-
-    <div class="subject-title subject-science"><i class="fas fa-flask"></i> Science</div>
-    <ul class="chapter-list">
-        <li>Force and Laws of Motion</li>
-        <li>Is Matter Around Us Pure</li>
-        <li>Tissues</li>
-    </ul>
-
-    <div class="subject-title subject-english"><i class="fas fa-book-open"></i> English</div>
-    <ul class="chapter-list">
-        <li>Packing</li>
-        <li>Gulliver in Lilliput (Part 1 & 2)</li>
-        <li>The Saint of the Gutters</li>
-        <li>Grammar (Tenses, Modals, Articles, Prepositions, Error Correction)</li>
-    </ul>
-
-<div class="marking-grid">
-<div class="mark-row">
-<div><div class="mark-val">60</div><div class="mark-lbl">Questions</div></div>
-<div><div class="mark-val">60</div><div class="mark-lbl">Max Marks</div></div>
-</div>
-<div class="scheme plus"><i class="fas fa-plus-circle"></i> +1 Mark for Correct Answer</div>
-<div class="scheme zero"><i class="fas fa-times-circle"></i> 0 Mark for Incorrect Answer</div>
-</div>
-</div>
-</div>
-
-<div class="exam-card">
-<div class="card-header">
-<div class="class-badge">Class 10</div><i class="fas fa-graduation-cap"></i>
-</div>
-<div class="card-body">
-    
-    <div class="subject-title subject-math"><i class="fas fa-calculator"></i> Mathematics</div>
-    <ul class="chapter-list">
-        <li>Real Numbers</li>
-        <li>Polynomials</li>
-        <li>Coordinate Geometry</li>
-    </ul>
-
-    <div class="subject-title subject-science"><i class="fas fa-flask"></i> Science</div>
-    <ul class="chapter-list">
-        <li>Chemical Reactions and Equations</li>
-        <li>Light – Reflection and Refraction</li>
-        <li>Human Eye and Colourful World</li>
-    </ul>
-
-    <div class="subject-title subject-english"><i class="fas fa-book-open"></i> English</div>
-    <ul class="chapter-list">
-        <li>Footprints Without Feet</li>
-        <li>From the Diary of a Young Girl</li>
-        <li>An Excellent Father</li>
-        <li>Grammar (Tenses, Modals, Articles, Error Correction)</li>
-    </ul>
-
-<div class="marking-grid">
-<div class="mark-row">
-<div><div class="mark-val">60</div><div class="mark-lbl">Questions</div></div>
-<div><div class="mark-val">60</div><div class="mark-lbl">Max Marks</div></div>
-</div>
-<div class="scheme plus"><i class="fas fa-plus-circle"></i> +1 Mark for Correct Answer</div>
-<div class="scheme zero"><i class="fas fa-times-circle"></i> 0 Mark for Incorrect Answer</div>
-</div>
-</div>
-</div>
-
-</section>
-
-<section class="participate-section">
-<h2 class="participate-title">How to Participate</h2>
-<div class="steps">
-<div class="step"><div class="step-num">1</div><div class="step-title">Install App</div>Download Marks Saathi from Google Play Store.</div>
-<div class="step"><div class="step-num">2</div><div class="step-title">Register</div>Sign up using your mobile number for free.</div>
-<div class="step"><div class="step-num">3</div><div class="step-title">Start Test</div>Go to Tests section of Free Material section.</div>
-</div>
-</section>
-
-<div class="download-app-container">
-<a class="download-btn" href="https://play.google.com/store/apps/details?id=co.ted.ykvjf" target="_blank">
-<i class="fab fa-google-play"></i> DOWNLOAD MARKS SAATHI APP
-</a>
-</div>
-
-<section class="reports-section">
-<div class="reports-box">
-<div class="reports-title">Solutions & Performance Reports</div>
-<div class="reports-desc">
-Solutions and detailed performance reports will be available after test on app.
-</div>
-</div>
-</section>
-
-<div class="share-container">
-<button class="share-btn" onclick="sharePage()">SHARE</button>
-</div>
-
-<footer>
-<div>Marks Saathi © 2026</div>
-<div>Learn Smart • Score Better • Grow Faster</div>
-</footer>
-
-<script>
-/* TIMER */
-const targetDate=new Date("May 3, 2026 19:45:00").getTime();
-const timerInterval = setInterval(()=>{
-const now=new Date().getTime();
-const diff=targetDate-now;
-
-if(diff<=0){
-    document.getElementById('timer-heading').innerText = "TEST HAS ENDED";
-    document.getElementById('timer-display').innerHTML = "<div style='font-size:1.2rem; font-weight:700; color:var(--primary); text-align:center;'>Check the app for reports!</div>";
-    clearInterval(timerInterval);
-    return;
-}
-
-document.getElementById('d').innerText=Math.floor(diff/(1000*60*60*24));
-document.getElementById('h').innerText=Math.floor((diff/(1000*60*60))%24);
-document.getElementById('m').innerText=Math.floor((diff/(1000*60))%60);
-document.getElementById('s').innerText=Math.floor((diff/1000)%60);
-},1000);
-
-/* SHARE */
-function sharePage(){
-const data={
-title:"INTEGRATED CONCEPT TEST – Marks Saathi",
-text:"Join the FREE INTEGRATED CONCEPT TEST on Marks Saathi!",
-url:window.location.href
-};
-if(navigator.share){
-navigator.share(data);
-}else{
-navigator.clipboard.writeText(window.location.href);
-alert("Link copied! Share it anywhere.");
-}
-}
-</script>
-
-</body>
-                           </html>
-                           
+    <main>
+        <section class="syllabus-section">
+            <div class="section-header">
+                <h2 class="section-title">Syllabus & Exam Pattern</h2>
+            </div>
+            
+            <div class="cards-grid">
+                
+                <article class="exam-card">
+                    <div class="card-header">
+                        <div class="class-badge">Class 8</div>
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="subject-block">
+                            <div class="subject-title subject-math"><i class="fas fa-calculator"></i> Mathematics</div>
+                            <ul class="chapter-list">
+                                <li>Rational Numbers</li>
+                                <li>Linear Equations in One Variable</li>
+                                <li>Understanding Quadrilaterals</li>
+                            </ul>
+                        </div>
+                        <div class="subject-block">
+                            <div class="subject-title subject-science"><i class="fas fa-flask"></i> Science</div>
+                            <ul class="chapter-list">
+                                <li>Coal and Petroleum</li>
+                                <li>Combustion and Flame</li>
+                                <li>Conservation of Plants and Animals</li>
+                            </ul>
+                        </div>
+                        <div class="subject-block">
+                            <div class="subject-title subject-english"><i class="fas fa-book-open"></i> English</div>
+                            <ul class="chapter-list">
+                                <li>How Teachers Learn & Life</li>
+                                <li>Global Warming</li>
+                                <li>Grammar (Tenses, Modals, Articles, Prepositions, Error Detection)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card-footer">
+                            <div class="mark-stats">
+                                <div><div class="stat-val">60</div><div class="stat-lbl">Questions</div></div>
+                                <div><div class="stat-val">60</div><div class="stat-lbl">Max Marks</div></div>
+                            </div>
+                            <div class="scheme-row positive"><i class="fas fa-check-circle"></i> +1 Mark for Correct Answer</div>
+                            <div class="scheme-row neutral"><i class="fas fa-minus-circle"></i> 0 Mark 
