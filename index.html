@@ -17,12 +17,12 @@
             --dark: #0f172a;         /* Slate 900 */
             --text-main: #334155;    /* Slate 700 */
             --text-light: #64748b;   /* Slate 500 */
-            --bg-body: #f8fafc;      /* Slate 50 */
             --bg-surface: #ffffff;
             --success: #10b981;      /* Emerald */
             --warning: #f59e0b;      /* Amber */
             --border: #e2e8f0;       /* Slate 200 */
             --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             --radius-lg: 16px;
             --radius-xl: 24px;
@@ -36,17 +36,20 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        /* Premium Unified Background */
         body {
-            background-color: var(--bg-body);
+            background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+            background-attachment: fixed;
             color: var(--text-main);
             line-height: 1.6;
         }
 
         /* --- NAVIGATION BAR --- */
         .top-nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -54,7 +57,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
         }
 
         .nav-brand {
@@ -70,6 +73,7 @@
             border-radius: 16px;
             object-fit: cover;
             border: 2px solid var(--border);
+            background: #fff;
         }
 
         .brand-text {
@@ -101,17 +105,20 @@
                 font-weight: 700;
                 font-size: 0.9rem;
                 text-decoration: none;
-                transition: background 0.3s;
+                transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+                box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
             }
-            .nav-cta:hover { background: var(--primary-hover); }
+            .nav-cta:hover { 
+                background: var(--primary-hover); 
+                transform: translateY(-2px);
+                box-shadow: 0 6px 15px rgba(79, 70, 229, 0.4);
+            }
         }
 
         /* --- HERO SECTION --- */
         .hero {
-            background: linear-gradient(135deg, #e0e7ff 0%, #ffffff 100%);
             padding: 4rem 1.5rem 3rem;
             text-align: center;
-            border-bottom: 1px solid var(--border);
         }
 
         .hero-container {
@@ -126,10 +133,11 @@
             color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 3px;
-            background: #e0e7ff;
+            background: rgba(224, 231, 255, 0.7);
             padding: 6px 16px;
             border-radius: 50px;
             margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.6);
         }
 
         .main-title {
@@ -138,16 +146,23 @@
             color: var(--dark);
             line-height: 1.1;
             letter-spacing: -1px;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
-        .hero-subtitle {
-            font-size: clamp(1.1rem, 2vw, 1.25rem);
-            color: var(--text-light);
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        /* Premium Subtitle Box */
+        .subtitle-box {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1.2rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            max-width: 750px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.15rem;
+            color: var(--text-main);
+            font-weight: 600;
         }
 
         /* --- HERO INFO & TIMER --- */
@@ -155,13 +170,13 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.5rem;
             margin-top: 2rem;
         }
 
         .info-card {
             background: var(--bg-surface);
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255,255,255,0.8);
             padding: 1.5rem 2rem;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
@@ -171,16 +186,40 @@
             min-width: 250px;
             flex: 1;
             max-width: 320px;
+            transition: transform 0.3s;
         }
 
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Premium Pricing Badge */
         .price-tag {
             display: flex;
-            align-items: baseline;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
         }
-        .price-crossed { color: var(--text-light); text-decoration: line-through; font-weight: 600; font-size: 1.2rem;}
-        .price-free { color: var(--success); font-size: 2.5rem; font-weight: 900; line-height: 1; }
+        .price-crossed { 
+            background: #fee2e2;
+            color: #dc2626;
+            text-decoration: line-through; 
+            font-weight: 800; 
+            font-size: 0.9rem;
+            padding: 4px 12px;
+            border-radius: 50px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .price-free { 
+            color: var(--success); 
+            font-size: 3rem; 
+            font-weight: 900; 
+            line-height: 1; 
+            text-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
 
         .info-label {
             font-size: 0.8rem;
@@ -198,6 +237,7 @@
             border: 2px solid var(--primary);
             background: #f5f3ff;
             max-width: 400px;
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.15);
         }
 
         .timer-row {
@@ -214,7 +254,7 @@
             padding: 10px;
             border-radius: 10px;
             min-width: 60px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
 
         .time-val { font-size: 1.8rem; font-weight: 900; color: var(--dark); line-height: 1; }
@@ -222,32 +262,46 @@
 
         /* --- SYLLABUS SECTION --- */
         .syllabus-section {
-            padding: 5rem 1.5rem;
+            padding: 4rem 1.5rem 6rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
         }
 
         .section-title {
             font-size: 2.2rem;
             font-weight: 900;
             color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 4px;
         }
 
         .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
-        /* Class Card Background Palettes */
+        /* Updated Premium Background Palettes */
         .card-8 { background-color: #ecfdf5; border: 1px solid #a7f3d0; } /* Soft Emerald */
         .card-9 { background-color: #eff6ff; border: 1px solid #bfdbfe; } /* Soft Blue */
-        .card-10 { background-color: #fdf4ff; border: 1px solid #e9d5ff; } /* Soft Purple */
+        .card-10 { background-color: #f5f3ff; border: 1px solid #ddd6fe; } /* Soft Indigo/Violet */
 
         .exam-card {
             border-radius: var(--radius-xl);
@@ -259,8 +313,8 @@
         }
 
         .exam-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 30px 40px -10px rgba(0, 0, 0, 0.15);
         }
 
         .card-header {
@@ -281,7 +335,7 @@
         .card-header i { font-size: 1.5rem; color: var(--secondary); }
 
         .card-body {
-            padding: 1.5rem;
+            padding: 1.8rem 1.5rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -292,11 +346,11 @@
         .subject-title {
             font-size: 1.1rem;
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 8px;
-            padding-bottom: 5px;
+            padding-bottom: 6px;
             border-bottom: 2px solid rgba(0,0,0,0.05);
         }
         
@@ -323,14 +377,14 @@
             position: relative;
             padding-left: 24px;
             font-size: 0.95rem;
-            font-weight: 600; /* Slightly bolder for readability on color backgrounds */
+            font-weight: 600; 
             color: var(--dark);
             margin-bottom: 8px;
             line-height: 1.4;
         }
 
         .chapter-list li::before {
-            content: '\f0da'; /* Solid right arrow */
+            content: '\f0da'; 
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             color: var(--primary);
@@ -344,10 +398,11 @@
         /* Card Footer - Marks */
         .card-footer {
             margin-top: auto;
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.7);
             border-radius: var(--radius-lg);
             padding: 1.2rem;
             border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
 
         .exam-type {
@@ -388,10 +443,11 @@
 
         /* --- HOW TO PARTICIPATE --- */
         .participate-section {
-            background: var(--bg-surface);
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
             padding: 5rem 1.5rem;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+            border-top: 1px solid rgba(255,255,255,0.8);
+            border-bottom: 1px solid rgba(255,255,255,0.8);
         }
 
         .steps-container {
@@ -405,6 +461,14 @@
 
         .step-card {
             padding: 2rem;
+            background: white;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
         }
 
         .step-icon {
@@ -510,6 +574,8 @@
             .logo-img-small { width: 55px; height: 55px; border-radius: 12px; }
             .brand-name-small { font-size: 1.8rem; } 
             
+            .subtitle-box { font-size: 1rem; padding: 1rem 1.5rem; }
+
             .info-grid { flex-direction: column; align-items: stretch; }
             .info-card { max-width: 100%; }
 
@@ -537,7 +603,10 @@
         <div class="hero-container">
             <div class="presents-text">Presents</div>
             <h1 class="main-title">INTEGRATED CONCEPT TEST</h1>
-            <p class="hero-subtitle">Evaluate your knowledge, get detailed performance reports, and prepare to score better—all completely free on the Marks Saathi app.</p>
+            
+            <div class="subtitle-box">
+                Evaluate your knowledge, get detailed performance reports, and prepare to score better—all completely free on the Marks Saathi app.
+            </div>
             
             <div class="info-grid">
                 <div class="info-card">
@@ -738,7 +807,7 @@
         <section class="cta-section">
             <div class="cta-content">
                 <h2 class="cta-title">Ready to Check Your Preparations?</h2>
-                <p class="hero-subtitle" style="color: #cbd5e1; margin-bottom: 2rem;">
+                <p class="subtitle-box" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: #fff;">
                     Solutions and detailed, AI-driven performance reports will be available on the app immediately after the test concludes.
                 </p>
                 
@@ -760,7 +829,7 @@
     </footer>
 
     <script>
-        // TIMER LOGIC (Using universally supported date parsing format: Year, Month Index (0-11), Day, Hour, Minute, Second)
+        // TIMER LOGIC (Using universally supported date parsing format)
         // May is Month Index 4
         const targetDate = new Date(2026, 4, 3, 19, 45, 0).getTime();
         
