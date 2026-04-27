@@ -20,6 +20,7 @@
             --bg-surface: #ffffff;
             --success: #10b981;      /* Emerald */
             --warning: #f59e0b;      /* Amber */
+            --danger: #ef4444;       /* Red */
             --border: #e2e8f0;       /* Slate 200 */
             --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -235,6 +236,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 12px;
+            transition: color 0.3s ease;
         }
 
         .date-text { font-size: 1.4rem; font-weight: 800; color: var(--dark); }
@@ -245,6 +247,7 @@
             background: #f5f3ff;
             max-width: 400px;
             box-shadow: 0 10px 25px rgba(79, 70, 229, 0.15);
+            transition: border-color 0.3s ease, background 0.3s ease;
         }
 
         .timer-row {
@@ -266,6 +269,45 @@
 
         .time-val { font-size: 1.8rem; font-weight: 900; color: var(--dark); line-height: 1; }
         .time-lbl { font-size: 0.7rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; margin-top: 4px; }
+
+        /* --- JOIN TEST NOW BUTTON --- */
+        .hero-action {
+            margin-top: 3rem;
+        }
+
+        .join-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 1.2rem 3.5rem;
+            font-size: 1.25rem;
+            font-weight: 900;
+            border-radius: 50px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: pulse-glow 2s infinite;
+        }
+
+        .join-btn i {
+            font-size: 1.4rem;
+        }
+
+        .join-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(79, 70, 229, 0.6);
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(79, 70, 229, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+        }
 
         /* --- SYLLABUS SECTION --- */
         .syllabus-section {
@@ -588,6 +630,8 @@
 
             .mark-stats { gap: 5px; }
             .stat-val { font-size: 1.3rem; }
+            
+            .join-btn { width: 100%; font-size: 1.1rem; padding: 1.2rem 1.5rem; }
         }
 
     </style>
@@ -629,7 +673,7 @@
                     <div class="time-text">07:45 PM – 08:45 PM</div>
                 </div>
 
-                <div class="info-card timer-card">
+                <div class="info-card timer-card" id="timer-box">
                     <div class="info-label" id="timer-heading"><i class="fas fa-hourglass-half"></i> Test Starts In</div>
                     <div class="timer-row" id="timer-display">
                         <div class="time-unit"><div class="time-val" id="d">00</div><div class="time-lbl">Days</div></div>
@@ -639,6 +683,13 @@
                     </div>
                 </div>
             </div>
+
+            <div class="hero-action">
+                <a href="https://play.google.com/store/apps/details?id=co.ted.ykvjf" class="join-btn" target="_blank">
+                    <i class="fas fa-rocket"></i> JOIN TEST NOW 
+                </a>
+            </div>
+            
         </div>
     </header>
 
@@ -836,18 +887,40 @@
     </footer>
 
     <script>
-        // TIMER LOGIC (Using universally supported date parsing format)
+        // ADVANCED TIMER LOGIC
         // May is Month Index 4
-        const targetDate = new Date(2026, 4, 3, 19, 45, 0).getTime();
+        const start = new Date(2026, 4, 3, 19, 45, 0).getTime();
+        const end = new Date(2026, 4, 3, 20, 45, 0).getTime();
         
         const timerInterval = setInterval(() => {
             const now = new Date().getTime();
-            const diff = targetDate - now;
+            let targetTime = 0;
+            let diff = 0;
+            const headingEl = document.getElementById('timer-heading');
+            const timerBox = document.getElementById('timer-box');
 
-            if (diff <= 0) {
-                document.getElementById('timer-heading').innerText = "TEST HAS ENDED";
-                document.getElementById('timer-heading').style.color = "var(--dark)";
-                document.getElementById('timer-display').innerHTML = "<div style='font-size:1.2rem; font-weight:800; color:var(--primary); text-align:center;'>Check the app for your detailed reports!</div>";
+            if (now < start) {
+                // BEFORE TEST
+                headingEl.innerHTML = "<i class='fas fa-hourglass-start'></i> Test Starts In";
+                targetTime = start;
+                diff = targetTime - now;
+            } 
+            else if (now >= start && now < end) {
+                // DURING TEST
+                headingEl.innerHTML = "<i class='fas fa-exclamation-circle'></i> Test Ends In";
+                headingEl.style.color = "var(--danger)";
+                timerBox.style.borderColor = "var(--danger)";
+                timerBox.style.background = "#fff1f2"; // Soft red background
+                targetTime = end;
+                diff = targetTime - now;
+            } 
+            else {
+                // AFTER TEST
+                headingEl.innerHTML = "<i class='fas fa-check-circle'></i> TEST HAS ENDED";
+                headingEl.style.color = "var(--dark)";
+                timerBox.style.borderColor = "var(--success)";
+                timerBox.style.background = "#ecfdf5";
+                document.getElementById('timer-display').innerHTML = "<div style='font-size:1.2rem; font-weight:800; color:var(--success); text-align:center;'>Check the app for your detailed reports!</div>";
                 clearInterval(timerInterval);
                 return;
             }
