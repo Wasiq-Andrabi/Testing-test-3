@@ -617,8 +617,43 @@
             letter-spacing: 1px;
         }
 
+        /* --- MOBILE STICKY CTA --- */
+        .mobile-sticky-cta {
+            display: none; /* Hidden by default (desktop) */
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 12px 15px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            text-align: center;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .mobile-sticky-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 14px 20px;
+            font-size: 1.15rem;
+            font-weight: 900;
+            border-radius: 50px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+            animation: pulse-glow 2s infinite;
+        }
+
         /* --- RESPONSIVE ADJUSTMENTS --- */
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
             .nav-brand { gap: 12px; }
             .logo-img-small { width: 55px; height: 55px; border-radius: 12px; }
             .brand-name-small { font-size: 1.8rem; } 
@@ -632,6 +667,10 @@
             .stat-val { font-size: 1.3rem; }
             
             .join-btn { width: 100%; font-size: 1.1rem; padding: 1.2rem 1.5rem; }
+
+            /* Show Sticky Mobile CTA & Prevent footer overlap */
+            .mobile-sticky-cta { display: block; }
+            body { padding-bottom: 85px; } 
         }
 
     </style>
@@ -885,6 +924,12 @@
         <div>&copy; 2026 Marks Saathi. All rights reserved.</div>
         <div class="footer-tagline">Learn Smart • Score Better • Grow Faster</div>
     </footer>
+
+    <div class="mobile-sticky-cta">
+        <a href="https://play.google.com/store/apps/details?id=co.ted.ykvjf" class="mobile-sticky-btn" target="_blank">
+            <i class="fas fa-rocket"></i> JOIN TEST NOW
+        </a>
+    </div>
 
     <script>
         // ADVANCED TIMER LOGIC
