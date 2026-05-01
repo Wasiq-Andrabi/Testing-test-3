@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrated Concept Test | Marks Saathi</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Modern, professional educational palette */
+            --primary: #4f46e5;      /* Indigo */
+            --primary-hover: #4338ca;
+            --secondary: #0ea5e9;    /* Ocean Blue */
+            --dark: #0f172a;         /* Slate 900 */
+            --text-main: #334155;    /* Slate 700 */
+            --text-light: #64748b;   /* Slate 500 */
+            --bg-surface: #ffffff;
+            --success: #10b981;      /* Emerald */
+            --warning: #f59e0b;      /* Amber */
+            --danger: #ef4444;       /* Red */
+            --border: #e2e8f0;       /* Slate 200 */
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Premium Dynamic Animated Background */
+        body {
+            background: linear-gradient(-45deg, #eef2ff, #f3e8ff, #e0f2fe, #f8fafc);
+            background-size: 400% 400%;
+            animation: elegantGradient 15s ease infinite;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        @keyframes elegantGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- NAVIGATION BAR --- */
+        .top-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-img-small {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            object-fit: cover;
+            border: 2px solid var(--border);
+            background: #fff;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name-small {
+            font-size: 2.2rem; 
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-cta {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .nav-cta {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                background: var(--primary);
+                color: white;
+                padding: 0.6rem 1.2rem;
+                border-radius: 50px;
+                font-weight: 700;
+                font-size: 0.9rem;
+                text-decoration: none;
+                transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+                box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+            }
+            .nav-cta:hover { 
+                background: var(--primary-hover); 
+                transform: translateY(-2px);
+                box-shadow: 0 6px 15px rgba(79, 70, 229, 0.4);
+            }
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 4rem 1.5rem 3rem;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .presents-text {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: rgba(224, 231, 255, 0.7);
+            padding: 6px 16px;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+
+        .main-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            color: var(--dark);
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Premium Subtitle Box */
+        .subtitle-box {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1.2rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            max-width: 750px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.15rem;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        /* --- HERO INFO & TIMER --- */
+        .info-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .info-card {
+            background: var(--bg-surface);
+            border: 1px solid rgba(255,255,255,0.8);
+            padding: 1.5rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 250px;
+            flex: 1;
+            max-width: 320px;
+            transition: transform 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Premium Pricing Badge */
+        .price-tag {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .price-crossed { 
+            background: #fee2e2;
+            color: #dc2626;
+            text-decoration: line-through; 
+            font-weight: 800; 
+            font-size: 0.9rem;
+            padding: 4px 12px;
+            border-radius: 50px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .price-free { 
+            color: var(--success); 
+            font-size: 3rem; 
+            font-weight: 900; 
+            line-height: 1; 
+            text-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+
+        .info-label {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            transition: color 0.3s ease;
+        }
+
+        .date-text { font-size: 1.4rem; font-weight: 800; color: var(--dark); }
+        .time-text { color: var(--primary); font-weight: 700; margin-top: 4px; font-size: 1.1rem; }
+
+        .timer-card {
+            border: 2px solid var(--primary);
+            background: #f5f3ff;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.15);
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .timer-row {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .time-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            min-width: 60px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .time-val { font-size: 1.8rem; font-weight: 900; color: var(--dark); line-height: 1; }
+        .time-lbl { font-size: 0.7rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; margin-top: 4px; }
+
+        /* --- JOIN TEST NOW BUTTON (HERO) --- */
+        .hero-action {
+            margin-top: 3rem;
+        }
+
+        .join-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 1.2rem 3.5rem;
+            font-size: 1.25rem;
+            font-weight: 900;
+            border-radius: 50px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: pulse-glow-hero 2s infinite;
+        }
+
+        .join-btn i { font-size: 1.4rem; }
+
+        .join-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(79, 70, 229, 0.6);
+        }
+
+        @keyframes pulse-glow-hero {
+            0% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(79, 70, 229, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(79, 70, 229, 0); }
+        }
+
+        /* --- SYLLABUS SECTION --- */
+        .syllabus-section {
+            padding: 4rem 1.5rem 6rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        /* Updated Premium Background Palettes */
+        .card-8 { background-color: #ecfdf5; border: 1px solid #a7f3d0; } /* Soft Emerald */
+        .card-9 { background-color: #eff6ff; border: 1px solid #bfdbfe; } /* Soft Blue */
+        .card-10 { background-color: #f5f3ff; border: 1px solid #ddd6fe; } /* Soft Indigo/Violet */
+
+        .exam-card {
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .exam-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 40px -10px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            background: var(--dark);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .class-badge {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .card-header i { font-size: 1.5rem; color: var(--secondary); }
+
+        .card-body {
+            padding: 1.8rem 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .subject-block { margin-bottom: 1.5rem; }
+
+        .subject-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid rgba(0,0,0,0.05);
+        }
+        
+        .mcq-count {
+            margin-left: auto;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-light);
+            background: rgba(255,255,255,0.7);
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+
+        .subject-math { color: #db2777; }
+        .subject-science { color: #059669; }
+        .subject-english { color: #2563eb; }
+
+        .chapter-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .chapter-list li {
+            position: relative;
+            padding-left: 24px;
+            font-size: 0.95rem;
+            font-weight: 600; 
+            color: var(--dark);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .chapter-list li::before {
+            content: '\f0da'; 
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        /* Card Footer - Marks */
+        .card-footer {
+            margin-top: auto;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: var(--radius-lg);
+            padding: 1.2rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .exam-type {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mark-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+        }
+
+        .stat-val { font-size: 1.5rem; font-weight: 900; color: var(--dark); line-height: 1; }
+        .stat-lbl { font-size: 0.75rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; margin-top: 4px; }
+
+        .scheme-row {
+            display: flex;
+            align-items: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+        .scheme-row.positive { color: var(--success); }
+        .scheme-row.neutral { color: var(--text-main); }
+        .scheme-row i { width: 20px; text-align: center; margin-right: 6px; }
+
+        /* --- HOW TO PARTICIPATE --- */
+        .participate-section {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 5rem 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.8);
+            border-bottom: 1px solid rgba(255,255,255,0.8);
+        }
+
+        .steps-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .step-card {
+            padding: 2rem;
+            background: white;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-icon {
+            width: 70px;
+            height: 70px;
+            background: #e0e7ff;
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 0 0 10px rgba(79, 70, 229, 0.1);
+        }
+
+        .step-title { font-size: 1.3rem; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+        .step-desc { color: var(--text-light); font-weight: 500; }
+
+        /* --- CTA SECTION --- */
+        .cta-section {
+            background: var(--dark);
+            color: white;
+            padding: 5rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -10%;
+            width: 50%; height: 200%;
+            background: radial-gradient(circle, rgba(79,70,229,0.3) 0%, rgba(0,0,0,0) 70%);
+            z-index: 1;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 1.5rem; line-height: 1.2; }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            color: var(--dark);
+            padding: 1.2rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 10px 25px rgba(255,255,255,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .download-btn i { font-size: 1.4rem; color: var(--primary); }
+        .download-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255,255,255,0.2); }
+
+        .share-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: border-color 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .share-btn:hover { border-color: white; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #020617;
+            color: var(--text-light);
+            text-align: center;
+            padding: 2.5rem 1.5rem 6rem; /* Extra bottom padding so mobile FAB doesn't hide text */
+            font-size: 0.9rem;
+        }
+
+        .footer-tagline {
+            color: white;
+            font-weight: 700;
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+
+        /* --- MOBILE STICKY CIRCLE FAB --- */
+        .floating-join-btn {
+            display: none; /* Hidden by default (desktop) */
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 75px;
+            height: 75px;
+            background: linear-gradient(135deg, #f43f5e, #e11d48); /* Vibrant Crimson/Rose */
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(225, 29, 72, 0.4);
+            z-index: 9999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: fab-pulse 2s infinite;
+        }
+
+        .floating-join-btn i {
+            font-size: 1.6rem;
+            margin-bottom: 2px;
+        }
+
+        .floating-join-btn span {
+            font-size: 0.7rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        @keyframes fab-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.5); transform: scale(1); }
+            50% { transform: scale(1.05); }
+            70% { box-shadow: 0 0 0 15px rgba(225, 29, 72, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); transform: scale(1); }
+        }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 768px) {
+            .nav-brand { gap: 12px; }
+            .logo-img-small { width: 55px; height: 55px; border-radius: 12px; }
+            .brand-name-small { font-size: 1.8rem; } 
+            
+            .subtitle-box { font-size: 1rem; padding: 1rem 1.5rem; }
+
+            .info-grid { flex-direction: column; align-items: stretch; }
+            .info-card { max-width: 100%; }
+
+            .mark-stats { gap: 5px; }
+            .stat-val { font-size: 1.3rem; }
+            
+            .join-btn { width: 100%; font-size: 1.1rem; padding: 1.2rem 1.5rem; }
+
+            /* Show Sticky Mobile Circle */
+            .floating-join-btn { display: flex; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav">
+        <a href="#" class="nav-brand">
+            <img src="https://i.postimg.cc/HWSDVGyx/IMG-20260427-000339.jpg" class="logo-img-small" alt="Marks Saathi Logo">
+            <div class="brand-text">
+                <div class="brand-name-small">MARKS SAATHI</div>
+            </div>
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=co.ted.ykvjf" class="nav-cta" target="_blank">
+            Get App <i class="fab fa-google-play"></i>
+        </a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-container">
+            <div class="presents-text">Presents</div>
+            <h1 class="main-title">INTEGRATED CONCEPT TEST</h1>
+            
+            <div class="subtitle-box">
+                Evaluate your knowledge, get detailed performance reports, and prepare to score better—all completely free on the Marks Saathi app.
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="price-tag">
+                        <span class="price-crossed">Worth ₹999</span>
+                        <span class="price-free">FREE</span>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-label"><i class="far fa-calendar-alt"></i> Exam Date & Timing</div>
+                    <div class="date-text">Tue, 5 May 2026</div>
+                    <div class="time-text">07:45 PM – 08:45 PM</div>
+                </div>
+
+                <div class="info-card timer-card" id="timer-box">
+                    <div class="info-label" id="timer-heading"><i class="fas fa-hourglass-half"></i> Test Starts In</div>
+                    <div class="timer-row" id="timer-display">
+                        <div class="time-unit"><div class="time-val" id="d">00</div><div class="time-lbl">Days</div></div>
+                        <div class="time-unit"><div class="time-val" id="h">00</div><div class="time-lbl">Hrs</div></div>
+                        <div class="time-unit"><div class="time-val" id="m">00</div><div class="time-lbl">Min</div></div>
+                        <div class="time-unit"><div class="time-val" id="s">00</div><div class="time-lbl">Sec</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-action">
+                <a href="https://play.google.com/store/apps/details?id=co.ted.ykvjf" class="join-btn" target="_blank">
+                    <i class="fas fa-rocket"></i> JOIN TEST NOW 
+                </a>
+            </div>
+            
+        </div>
+    </header>
+
+    <main>
+        <section class="syllabus-section">
+            <div class="section-header">
+                <h2 class="section-title">Syllabus & Exam Pattern</h2>
+            </div>
+            
+            <div class="cards-grid">
+                
+                <article class="exam-card card-8">
+                    <div class="card-header">
+                        <div class="class-badge">Class 8</div>
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="subject-block">
+                            <div class="subject-title subject-math"><i class="fas fa-calculator"></i> Mathematics <span class="mcq-count">(20 MCQ)</span></div>
+                            <ul class="chapter-list">
+                                <li>Rational Numbers</li>
+                                <li>Linear Equations in One Variable</li>
+                                <li>Understanding Quadrilaterals</li>
+                            </ul>
+                        </div>
+                        <div class="subject-block">
+                            <div class="subject-title subject-science"><i class="fas fa-flask"></i> Science <span class="mcq-count">(20 MCQ)</span></div>
+                            <ul class="chapter-list">
+                                <li>Coal and Petroleum</li>
+                                <li>Combustion and Flame</li>
+                                <li>Conservation of Plants and Animals</li>
+                            </ul>
+                        </div>
+                        <div class="subject-block">
+                            <div class="subject-title subject-english"><i class="fas fa-book-open"></i> English <span class="mcq-count">(20 MCQ)</span></div>
+                            <ul class="chapter-list">
+                                <li>How Teachers Learn</li>
+                                <li>Life</li>
+                                <li>Global Warming</li>
+                                <li>Grammar (Tenses, Modals, Articles, Prepositions, Error Detection)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card-footer">
+                            <div class="exam-type"><i class="fas fa-list-ul"></i> Exam Type: MCQ</div>
+                            <div class="mark-stats">
+                                <div><div class="stat-val">60</div><div class="stat-lbl">Questions</div></div>
+                                <div><div class="stat-val">60</div><div class="stat-lbl">Mins</div></div>
+                                <div><div class="stat-val">60</div><div class="stat-lbl">Max Marks</div></div>
+                            </div>
+                            <div class="scheme-row positive"><i class="fas fa-check-circle"></i> +1 Mark for Correct Answer</div>
+                            <div class="scheme-row neutral"><i class="fas fa-minus-circle"></i> 0 Mark for Incorrect Answer</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="exam-card card-9">
+                    <div class="card-header">
+                        <div class="class-badge">Class 9</div>
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="subject-block">
+                            <div class="subject-title subject-math"><i class="fas fa-calculator"></i> Mathematics <span class="mcq-count">(20 MCQ)</span></div>
+                            <ul class="chapter-list">
+                                <li>Number System</li>
+                                <li>Polynomials</li>
+                                <li>Linear Equations in Two Variables</li>
+                            </ul>
+                        </div>
+                        <div class="subject-block">
+                            <div class="subject-title subject-science"><i class="fas fa-flask"></i> Science <span class="mcq-count">(20 MCQ)</span></div>
+                            <ul class="chapter-list">
+                                <li>Force and Laws of Motion</li>
+                                <li>Is Matter Around Us Pure</li>
+                                <li>Tissues</li>
+                            </ul>
+                        </div>
+                        <div class="subject-block">
+                            <div class="subject-title subject-english"><i class="fas fa-book-open"></i> English <span class="mcq-count">(20 MCQ)</span></div>
+                            <ul class="chapter-list">
+                                <li>Packing</li>
+                                <li>Gulliver in Lilliput (Part 1 & 2)</li>
+                                <li>The Saint of the Gutters</li>
+                                <li>Grammar (Tenses, Modals, Articles, Prepositions, Error Correction)</li>
+                            </ul>
+                        </div>
+
+                        <div class="card-footer">
+                            <div class="exam-type"><i class="fas fa-list-ul"></i> Exam Type: MCQ</div>
+                            <div class="mark-stats">
+                                <div><div class="stat-val">60</div><div class="stat-lbl">Questions</div></div>
+                                <div><div class="stat-val">60</div><div class="stat-lbl">Mins</div></div>
+                                <div><div class="stat-val">60</div><div class="stat-lbl">Max Marks</div></div>
+                            </div>
+                            <div class="scheme-row positive"><i class="fas fa-check-circle"></i> +1 Mark for Correct Answer</div>
+                            <div class="scheme-row neutral"><i class="fas fa-minus-circle"></i> 0 Mark for Incorrect Answer</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="exam-card card-10">
+                    <div class="card-header">
+                        <div class="class-badge">Class 10</div>
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="subject-block">
+                            <div class="subject-title subject-math"><i class="fas fa-calculator"></i> Mathematics <span class="mcq-count">(20 MCQ)</span></div>
+                            <ul class="chapter-list">
+                                <li>Real Numbers</li>
+                                <li>Polynomials</li>
+                                <li>Coordinate Geometry</li>
+                            </ul>
+                        </div>
+                        <div class="subject-block">
+                            <div class="subject-title subject-science"><i class="fas fa-flask"></i> Science <span class="mcq-count">(20 MCQ)</span></div>
+                            <ul class="chapter-list">
+                                <li>Chemical Reactions and Equations</li>
+                                <li>Light – Reflection and Refraction</li>
+                                <li>Human Eye and Colourful World</li>
+                            </ul>
+                        </div>
+                        <div class="subject-block">
+                            <div class="subject-title subject-english"><i class="fas fa-book-open"></i> English <span class="mcq-count">(20 MCQ)</span></div>
+                            <ul class="chapter-list">
+                                <li>Footprints Without Feet</li>
+                                <li>From the Diary of a Young Girl</li>
+                                <li>An Excellent Father</li>
+                                <li>Grammar (Tenses, Modals, Articles, Error Correction)</li>
+                            </ul>
+                        </div>
+
+                        <div class="card-footer">
+                            <div class="exam-type"><i class="fas fa-list-ul"></i> Exam Type: MCQ</div>
+                            <div class="mark-stats">
+                                <div><div class="stat-val">60</div><div class="stat-lbl">Questions</div></div>
+                                <div><div class="stat-val">60</div><div class="stat-lbl">Mins</div></div>
+                                <div><div class="stat-val">60</div><div class="stat-lbl">Max Marks</div></div>
+                            </div>
+                            <div class="scheme-row positive"><i class="fas fa-check-circle"></i> +1 Mark for Correct Answer</div>
+                            <div class="scheme-row neutral"><i class="fas fa-minus-circle"></i> 0 Mark for Incorrect Answer</div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="participate-section">
+            <div class="section-header">
+                <h2 class="section-title">How to Participate</h2>
+            </div>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-icon"><i class="fab fa-google-play"></i></div>
+                    <h3 class="step-title">1. Install App</h3>
+                    <p class="step-desc">Download Marks Saathi securely from the Google Play Store.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon"><i class="fas fa-user-plus"></i></div>
+                    <h3 class="step-title">2. Register Free</h3>
+                    <p class="step-desc">Sign up instantly using your mobile number.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3 class="step-title">3. Start Test</h3>
+                    <p class="step-desc">Navigate to the "Free Material" > "Tests" section to begin.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Check Your Preparations?</h2>
+                <p class="subtitle-box" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: #fff;">
+                    Solutions and detailed, AI-driven performance reports will be available on the app immediately after the test concludes.
+                </p>
+                
+                <a class="download-btn" href="https://play.google.com/store/apps/details?id=co.ted.ykvjf" target="_blank">
+                    Download Marks Saathi App <i class="fab fa-google-play"></i>
+                </a>
+                
+                <br>
+                <button class="share-btn" onclick="sharePage()">
+                    <i class="fas fa-share-nodes"></i> Share with Friends
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div>&copy; 2026 Marks Saathi. All rights reserved.</div>
+        <div class="footer-tagline">Learn Smart • Score Better • Grow Faster</div>
+    </footer>
+
+    <a href="https://play.google.com/store/apps/details?id=co.ted.ykvjf" class="floating-join-btn" target="_blank">
+        <i class="fas fa-rocket"></i>
+        <span>JOIN</span>
+    </a>
+
+    <script>
+        // ADVANCED TIMER LOGIC
+        // May is Month Index 4
+        const start = new Date(2026, 4, 5, 19, 45, 0).getTime();
+        const end = new Date(2026, 4, 5, 20, 45, 0).getTime();
+        
+        const timerInterval = setInterval(() => {
+            const now = new Date().getTime();
+            let targetTime = 0;
+            let diff = 0;
+            const headingEl = document.getElementById('timer-heading');
+            const timerBox = document.getElementById('timer-box');
+
+            if (now < start) {
+                // BEFORE TEST
+                headingEl.innerHTML = "<i class='fas fa-hourglass-start'></i> Test Starts In";
+                targetTime = start;
+                diff = targetTime - now;
+            } 
+            else if (now >= start && now < end) {
+                // DURING TEST
+                headingEl.innerHTML = "<i class='fas fa-exclamation-circle'></i> Test Ends In";
+                headingEl.style.color = "var(--danger)";
+                timerBox.style.borderColor = "var(--danger)";
+                timerBox.style.background = "#fff1f2"; // Soft red background
+                targetTime = end;
+                diff = targetTime - now;
+            } 
+            else {
+                // AFTER TEST
+                headingEl.innerHTML = "<i class='fas fa-check-circle'></i> TEST HAS ENDED";
+                headingEl.style.color = "var(--dark)";
+                timerBox.style.borderColor = "var(--success)";
+                timerBox.style.background = "#ecfdf5";
+                document.getElementById('timer-display').innerHTML = "<div style='font-size:1.2rem; font-weight:800; color:var(--success); text-align:center;'>Check the app for your detailed reports!</div>";
+                clearInterval(timerInterval);
+                return;
+            }
+
+            // Calculate time parts, pad with zeros if needed
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            const h = Math.floor((diff / (1000 * 60 * 60)) % 24).toString().padStart(2, '0');
+            const m = Math.floor((diff / (1000 * 60)) % 60).toString().padStart(2, '0');
+            const s = Math.floor((diff / 1000) % 60).toString().padStart(2, '0');
+
+            document.getElementById('d').innerText = d;
+            document.getElementById('h').innerText = h;
+            document.getElementById('m').innerText = m;
+            document.getElementById('s').innerText = s;
+        }, 1000);
+
+        // NATIVE SHARE LOGIC
+        function sharePage() {
+            const shareData = {
+                title: "INTEGRATED CONCEPT TEST – Marks Saathi",
+                text: "Join the FREE INTEGRATED CONCEPT TEST on Marks Saathi! Test your knowledge and get detailed reports.",
+                url: window.location.href
+            };
+            
+            if (navigator.share) {
+                navigator.share(shareData).catch(console.error);
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert("Link copied to clipboard! Share it with your friends.");
+            }
+        }
+    </script>
+</body>
+</html>
